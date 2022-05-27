@@ -26,8 +26,4 @@ public class Materia {
 
     private Boolean activo;
 
-    @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Calificacion> calificaciones;
-
 }

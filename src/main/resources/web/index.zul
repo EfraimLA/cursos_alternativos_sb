@@ -1,32 +1,33 @@
-<zk>
-    <window title="Lista Alumnos" width="600px" border="normal" apply="org.acme.controllers.AlumnosVM"
-            style="margin:auto">
-        Keyword:
-        <textbox id="keywordBox"/>
-        <button id="searchButton" label="Search" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
+<window title="Lista Alumnos" width="600px" border="normal" style="margin:auto"
+        apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.acme.vm.AlumnosVM')" onOK="@command('search')">
+    Keyword:
+    <textbox value="@save(vm.keyword)"/>
+    <button label="Search" onClick="@command('search')" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
 
-        <listbox id="alumnoListBox" emptyMessage="No alumnos found in the result" rows="5">
-            <listhead>
-                <listheader label="Nombre"/>
-                <listheader label="Apellido Paterno"/>
-                <listheader label="Apellido Materno"/>
-            </listhead>
-            <template name="model">
-                <listitem>
-                    <listcell label="${each.nombre}"/>
-                    <listcell label="${each.apPaterno}"/>
-                    <listcell label="${each.apMaterno}"/>
-                </listitem>
-            </template>
-        </listbox>
+    <listbox model="@load(vm.alumnoList)" emptyMessage="No alumnos found in the result" rows="5"
+             selectedItems="@save(vm.selectedAlumno)">
+        <listhead sizable="true">
+            <listheader label="Nombre"/>
+            <listheader label="Apellido Paterno"/>
+            <listheader label="Apellido Materno"/>
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@init(each.nombre)"/>
+                <listcell label="@init(each.apPaterno)"/>
+                <listcell label="@init(each.apMaterno)"/>
+            </listitem>
+        </template>
+    </listbox>
 
-        <hlayout style="margin-top: 20px" width="100%">
-            <vlayout hflex="1">
-                <label id="nombreLabel"/>
-                <label id="apPaternoLabel"/>
-                <label id="apMaternoLabel"/>
-            </vlayout>
-        </hlayout>
-    </window>
-</zk>
+    <hlayout style="margin-top: 20px" width="100%">
+        <vlayout hflex="1">
+            <label value="@load(vm.selectedAlumno.nombre)"/>
+            <label value="@load(vm.selectedAlumno.apPaterno)"/>
+            <label value="@load(vm.selectedAlumno.apMaterno)"/>
+            <label value="@load(vm.selectedAlumno.activo)"/>
+        </vlayout>
+    </hlayout>
+</window>
 

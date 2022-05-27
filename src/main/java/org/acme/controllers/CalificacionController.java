@@ -5,6 +5,7 @@ import org.acme.models.CalificacionResponse;
 import org.acme.models.CalificacionesMaterias;
 import org.acme.models.Response;
 import org.acme.repositories.CalificacionRepository;
+import org.jboss.logging.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,6 +18,8 @@ public class CalificacionController {
     private final CalificacionRepository repository;
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
+
+    private static final Logger LOGGER = Logger.getLogger(CalificacionController.class);
 
     private final SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
 
@@ -86,12 +89,12 @@ public class CalificacionController {
 
 
     @PutMapping("/calificaciones/{id}")
-    Response replaceCalificacion(@RequestBody @Valid Calificacion newCalificacion, @PathVariable Long id) {
+    Response replaceCalificacion(@RequestBody  Calificacion newCalificacion, @PathVariable Long id) {
+        LOGGER.info("||||| ACTUALIZANDO CALIFICACION ||||||");
+
         repository.findById(id)
                 .map(calificacion -> {
                     calificacion.setCalificacion(newCalificacion.getCalificacion());
-                    calificacion.setMateria(newCalificacion.getMateria());
-                    calificacion.setAlumno(newCalificacion.getAlumno());
                     return repository.save(calificacion);
                 }).orElseThrow();
 

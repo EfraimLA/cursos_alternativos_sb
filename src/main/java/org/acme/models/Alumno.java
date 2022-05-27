@@ -1,6 +1,7 @@
 package org.acme.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,15 +34,13 @@ public class Alumno {
     private String nombre;
 
     @Column(name = "ap_paterno", length = 80)
+    @JsonProperty("ap_paterno")
     private String apPaterno;
 
     @Column(name = "ap_materno", length = 80)
+    @JsonProperty("ap_materno")
     private String apMaterno;
 
     private Boolean activo;
-
-    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Calificacion> calificaciones;
 
 }
