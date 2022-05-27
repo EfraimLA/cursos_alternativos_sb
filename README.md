@@ -40,3 +40,18 @@ Eliminar una calificacion por su ID
 curl --location --request DELETE 'https://cursos-alternativos-sb.herokuapp.com/calificaciones/3'
 ```
 
+
+
+### Vista ZKoss
+
+La vista zkoss está disponible en la dirección `https://cursos-alternativos-sb.herokuapp.com/`
+
+**Funciones disponibles**
+
+- Listado de alumnos con nombre y apellidos
+- Búsqueda de alumnos por nombre y apellido
+
+**Funciones pendientes**
+
+- Vista de detalles (calificaciones) de alumno
+- Registro de nueva calificación
