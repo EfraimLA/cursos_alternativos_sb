@@ -40,8 +40,9 @@ public class Alumno {
 
     private Boolean activo;
 
-    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
+    @Transient
     private List<Calificacion> calificaciones;
 
 }

@@ -26,8 +26,9 @@ public class Materia {
 
     private Boolean activo;
 
-    @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
+    @Transient
     private List<Calificacion> calificaciones;
 
 }

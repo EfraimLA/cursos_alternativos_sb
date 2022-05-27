@@ -20,6 +20,7 @@
     <properties>
         <java.version>11</java.version>
         <zkspringboot.version>2.5.12</zkspringboot.version>
+        <zk.version>9.6.0.2</zk.version>
     </properties>
 
     <dependencies>
@@ -63,6 +64,11 @@
             <artifactId>zkspringboot-starter</artifactId>
             <type>pom</type>
             <version>${zkspringboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zkplus</artifactId>
+            <version>${zk.version}</version>
         </dependency>
 
         <!-- Utilities & Tools -->
