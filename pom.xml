@@ -71,6 +71,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.19.1</version>
+        </dependency>
     </dependencies>
 
     <repositories>

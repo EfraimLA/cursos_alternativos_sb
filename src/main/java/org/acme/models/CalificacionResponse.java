@@ -1,5 +1,6 @@
 package org.acme.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CalificacionResponse {
@@ -12,5 +13,5 @@ public class CalificacionResponse {
 
     public Double promedio;
 
-    public List<CalificacionesMaterias> calificaciones;
+    public List<CalificacionesMaterias> calificaciones = new ArrayList<>();
 }
