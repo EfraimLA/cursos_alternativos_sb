@@ -1,0 +1,32 @@
+<zk>
+    <window title="Lista Alumnos" width="600px" border="normal" apply="org.acme.controllers"
+            style="margin:auto">
+        Keyword:
+        <textbox id="keywordBox"/>
+        <button id="searchButton" label="Search" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
+
+        <listbox id="alumnoListBox" emptyMessage="No alumnos found in the result" rows="5">
+            <listhead>
+                <listheader label="Nombre"/>
+                <listheader label="Apellido Paterno"/>
+                <listheader label="Apellido Materno"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.nombre}"/>
+                    <listcell label="${each.apPaterno}"/>
+                    <listcell label="${each.apMaterno}"/>
+                </listitem>
+            </template>
+        </listbox>
+
+        <hlayout style="margin-top: 20px" width="100%">
+            <vlayout hflex="1">
+                <label id="nombreLabel"/>
+                <label id="apPaternoLabel"/>
+                <label id="apMaternoLabel"/>
+            </vlayout>
+        </hlayout>
+    </window>
+</zk>
+
