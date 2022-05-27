@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class Materia {
     private Long id;
 
     @Column(length = 80)
+    @NotNull
     private String nombre;
 
     private Boolean activo;

@@ -9,6 +9,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -31,14 +32,17 @@ public class Alumno {
     private Long id;
 
     @Column(length = 80)
+    @NotNull
     private String nombre;
 
     @Column(name = "ap_paterno", length = 80)
     @JsonProperty("ap_paterno")
+    @NotNull
     private String apPaterno;
 
     @Column(name = "ap_materno", length = 80)
     @JsonProperty("ap_materno")
+    @NotNull
     private String apMaterno;
 
     private Boolean activo;
