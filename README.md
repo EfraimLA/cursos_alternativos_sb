@@ -16,7 +16,7 @@ curl --location --request POST 'https://cursos-alternativos-sb.herokuapp.com/cal
 --data-raw '{
     "calificacion": 8,
     "alumno": {
-        "id": 2
+        "id": 1
     },
     "materia": {
         "id": 2
@@ -27,7 +27,7 @@ curl --location --request POST 'https://cursos-alternativos-sb.herokuapp.com/cal
 Actualizar una calificación por su ID
 
 ```
-curl --location --request PUT 'https://cursos-alternativos-sb.herokuapp.com/calificaciones/4' \
+curl --location --request PUT 'https://cursos-alternativos-sb.herokuapp.com/calificaciones/1' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "calificacion": 9
@@ -37,6 +37,21 @@ curl --location --request PUT 'https://cursos-alternativos-sb.herokuapp.com/cali
 Eliminar una calificacion por su ID
 
 ```
-curl --location --request DELETE 'https://cursos-alternativos-sb.herokuapp.com/calificaciones/3'
+curl --location --request DELETE 'https://cursos-alternativos-sb.herokuapp.com/calificaciones/1'
 ```
 
+
+
+### Vista ZKoss
+
+La vista zkoss está disponible en la dirección `https://cursos-alternativos-sb.herokuapp.com/`
+
+**Funciones disponibles**
+
+- Listado de alumnos con nombre y apellidos
+- Búsqueda de alumnos por nombre y apellido
+
+**Funciones pendientes**
+
+- Vista de detalles (calificaciones) de alumno
+- Registro de nueva calificación

@@ -4,6 +4,7 @@ import org.acme.models.Materia;
 import org.acme.repositories.MateriaRepository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,12 +27,12 @@ public class MateriaController {
     }
 
     @PostMapping("/materias")
-    Materia create(@RequestBody Materia materia) {
+    Materia create(@RequestBody @Valid Materia materia) {
         return repository.save(materia);
     }
 
     @PutMapping("/materias/{id}")
-    Materia replaceMateria(@RequestBody Materia newMateria, @PathVariable Long id) {
+    Materia replaceMateria(@RequestBody @Valid Materia newMateria, @PathVariable Long id) {
         return repository.findById(id)
                 .map(materia -> {
                     materia.setNombre(newMateria.getNombre());
