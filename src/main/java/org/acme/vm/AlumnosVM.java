@@ -36,8 +36,7 @@ public class AlumnosVM {
 
     @Init
     public void init(){
-        LOGGER.info("init()");
-        //alumnoList.addAll(alumnoService.findAll());
+        alumnoList.addAll(alumnoService.findAll());
     }
 
     @Command

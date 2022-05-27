@@ -1,6 +1,6 @@
 <window title="Lista Alumnos" width="600px" border="normal" style="margin:auto"
         apply="org.zkoss.bind.BindComposer"
-        viewModel="@id('vm') @init('org.acme.controllers.AlumnosVM')" onOK="@command('search')">
+        viewModel="@id('vm') @init('org.acme.vm.AlumnosVM')" onOK="@command('search')">
     Keyword:
     <textbox value="@save(vm.keyword)"/>
     <button label="Search" onClick="@command('search')" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
