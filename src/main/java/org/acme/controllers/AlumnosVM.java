@@ -4,22 +4,20 @@ import org.acme.models.Alumno;
 import org.acme.repositories.AlumnoRepository;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.ApplicationScope;
-import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.select.SelectorComposer;
+import org.springframework.stereotype.Controller;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 
-@ApplicationScope
-public class AlumnosController extends SelectorComposer<Component> {
+@Controller
+public class AlumnosVM {
 
-    private static final Logger LOGGER = Logger.getLogger(AlumnosController.class);
+    private static final Logger LOGGER = Logger.getLogger(AlumnosVM.class);
 
     @Autowired
-    AlumnoRepository alumnoRepository;
+    private AlumnoRepository alumnoRepository;
 
     @Wire
     private Textbox keywordBox;
@@ -38,18 +36,22 @@ public class AlumnosController extends SelectorComposer<Component> {
 
     private ListModelList<Alumno> dataModel = new ListModelList<>();
 
+    /*
     public void doAfterCompose(Component comp) throws Exception {
+        LOGGER.info("||||| doAfterCompose |||||");
         super.doAfterCompose(comp);
 
-        var alumno1 = new Alumno( "Juan", "Perez", "Perez", 1);
-        var alumno2 = new Alumno( "Jose", "Lopez", "Gonzalez", 1);
+        var alumno1 = new Alumno( "Juan", "Perez", "Perez", true);
+        var alumno2 = new Alumno( "Jose", "Lopez", "Gonzalez", true);
 
         alumnoRepository.save(alumno1);
         alumnoRepository.save(alumno2);
 
         dataModel.clear();
         alumnoListBox.setModel(dataModel);
-        dataModel.addAll(alumnoRepository.findAll());
+
+        alumnoRepository.findAll().forEach(dataModel::add);
     }
 
+     */
 }

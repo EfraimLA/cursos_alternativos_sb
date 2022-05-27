@@ -1,5 +1,5 @@
 <zk>
-    <window title="Lista Alumnos" width="600px" border="normal" apply="org.acme.controllers"
+    <window title="Lista Alumnos" width="600px" border="normal" apply="org.acme.controllers.AlumnosVM"
             style="margin:auto">
         Keyword:
         <textbox id="keywordBox"/>

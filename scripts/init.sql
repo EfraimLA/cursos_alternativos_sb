@@ -1,39 +1,39 @@
-create table t_alumnos
+CREATE TABLE t_alumnos
 (
-    id_t_usuarios int not null auto_increment,
-    nombre        varchar(80),
-    ap_paterno    varchar(80),
-    ap_materno    varchar(80),
-    activo        int(1),
-    primary key (id_t_usuarios)
-) ENGINE=INNODB;
+    id_t_usuarios SERIAL,
+    nombre        VARCHAR(80),
+    ap_paterno    VARCHAR(80),
+    ap_materno    VARCHAR(80),
+    activo        BOOLEAN,
+    PRIMARY KEY (id_t_usuarios)
+);
 
-insert into t_alumnos
-values (default, "John", "Dow", "Down", 1);
+INSERT INTO t_alumnos(id_t_usuarios, nombre, ap_paterno, ap_materno, activo)
+VALUES (default, 'John', 'Dow', 'Down', true);
 
-create table t_materias
+CREATE TABLE t_materias
 (
-    id_t_materias int not null auto_increment,
-    nombre        varchar(80),
-    activo        int(1),
-    primary key (id_t_materias)
-) ENGINE=INNODB;
+    id_t_materias SERIAL,
+    nombre        VARCHAR(80),
+    activo        BOOLEAN,
+    PRIMARY KEY (id_t_materias)
+);
 
-insert into t_materias
-values (default, "Matematicas", 1);
-insert into t_materias
-values (default, "Programacion 1", 1);
-insert into t_materias
-values (default, "Ingenieria de Software", 1);
+INSERT INTO t_materias(id_t_materias, nombre, activo)
+VALUES (default, 'Matematicas', true);
+INSERT INTO t_materias
+VALUES (default, 'Programacion I', true);
+INSERT INTO t_materias
+VALUES (default, 'Ingenieria de Software', true);
 
-create table t_calificaciones
+CREATE TABLE t_calificaciones
 (
-    id_t_calificaciones int not null auto_increment,
-    id_t_materias       int not null,
-    id_t_usuarios       int not null,
-    calificacion        decimal(10, 2),
-    fecha_registro      date,
-    primary key (id_t_calificaciones),
-    foreign key (id_t_materias) references t_materias (id_t_materias),
-    foreign key (id_t_usuarios) references t_alumnos (id_t_usuarios)
-) ENGINE=INNODB;
+    id_t_calificaciones SERIAL,
+    id_t_materias       INT NOT NULL,
+    id_t_alumnos        INT NOT NULL,
+    calificacion        DECIMAL(10, 2),
+    fecha_registro      DATE DEFAULT NOW(),
+    PRIMARY KEY (id_t_calificaciones),
+    FOREIGN KEY (id_t_materias) REFERENCES t_materias (id_t_materias),
+    FOREIGN KEY (id_t_alumnos) REFERENCES t_alumnos (id_t_usuarios)
+);

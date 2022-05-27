@@ -1,5 +1,6 @@
 package org.acme.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,13 +11,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "alumnos")
+@Table(name = "t_alumnos")
 @DynamicUpdate
 @Data
 @NoArgsConstructor
 public class Alumno {
 
-    public Alumno(String nombre, String apPaterno, String apMaterno, Integer activo) {
+    public Alumno(String nombre, String apPaterno, String apMaterno, Boolean activo) {
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;
@@ -25,21 +26,22 @@ public class Alumno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_t_usuarios")
     private Long id;
 
     @Column(length = 80)
     private String nombre;
 
-    @Column(length = 80)
+    @Column(name = "ap_paterno", length = 80)
     private String apPaterno;
 
-    @Column(length = 80)
+    @Column(name = "ap_materno", length = 80)
     private String apMaterno;
 
-    @Column(columnDefinition = "int(1)")
-    private Integer activo;
+    private Boolean activo;
 
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Calificacion> calificaciones;
 
 }
